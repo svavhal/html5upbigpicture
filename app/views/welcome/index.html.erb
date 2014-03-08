@@ -12,6 +12,12 @@
 							<li><a href="#two">Who I Am</a></li>
 							<li><a href="#work">My Work</a></li>
 							<li><a href="#contact">Contact</a></li>
+							<% if user_signed_in? %>
+								<li>
+								<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+							<% else %>
+								<li><%= link_to "Login", new_user_session_path %>
+							<% end %>
 						</ul>
 					</nav>
 

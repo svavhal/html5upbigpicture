@@ -50,4 +50,8 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
- gem 'annotate'
+gem 'annotate'
+gem "devise", "~> 3.2.3"
+gem "omniauth", "~> 1.2.1"
+gem "omniauth-facebook", "~> 1.6.0"
+gem "omniauth-twitter", "~> 1.0.1"

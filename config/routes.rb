@@ -1,6 +1,7 @@
 Html5upBigPicture::Application.routes.draw do
+  devise_for :users
   root 'welcome#index'
-  
+  resources :welcome
   post "contact/create" => "contact#create"
   # get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -56,4 +57,6 @@ Html5upBigPicture::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  get '/auth/:provider/callback', to: 'sessions#create'
 end
