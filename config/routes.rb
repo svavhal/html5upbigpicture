@@ -1,5 +1,4 @@
 Html5upBigPicture::Application.routes.draw do
-  get "session/create"
   devise_for :users
   root 'welcome#index'
   resources :welcome
@@ -59,5 +58,5 @@ Html5upBigPicture::Application.routes.draw do
   #     resources :products
   #   end
   
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'session#create'
 end
