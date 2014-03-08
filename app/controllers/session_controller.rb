@@ -1,11 +1,15 @@
 class SessionController < ApplicationController
   def create
-    # @user = User.find_or_create_from_auth_hash(auth_hash)
-    # self.current_user = @user
-    # redirect_to '/'
-    binding.pry
     auth_hash
-    render nothing: true
+    email = request.env['omniauth.auth']['info']['email']
+    provider = request.env['omniauth.auth']['provider']
+    token = request.env['omniauth.auth']['credentials']['token']
+    expires_at = request.env['omniauth.auth']['credentials']['expires_at']
+    first_name = request.env['omniauth.auth']['info']['first_name']
+    last_name = request.env['omniauth.auth']['info']['last_name']
+    user = User.new(email: email, first_name: first_name, last_name: last_name, password: 12345678, password_confirmation: 12345678)
+    user.save
+    sign_in :user, user
   end
   protected
 
