@@ -1,4 +1,5 @@
 Html5upBigPicture::Application.routes.draw do
+  get "session/create"
   devise_for :users
   root 'welcome#index'
   resources :welcome
