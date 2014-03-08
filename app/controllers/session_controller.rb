@@ -9,7 +9,10 @@ class SessionController < ApplicationController
     last_name = request.env['omniauth.auth']['info']['last_name']
     user = User.new(email: email, first_name: first_name, last_name: last_name, password: 12345678, password_confirmation: 12345678)
     user.save
+    auth = Authentication.new(user_id: user.id, provider: provider, token: token, expires_at: expires_at)
+    auth.save
     sign_in :user, user
+    redirect_to root_path
   end
   protected
 
